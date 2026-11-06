@@ -5,6 +5,10 @@ low over the pictures, and each word brightens as it is sung. It works for Hindi
 
 Lyrics, conceived and produced by Rajesh Ranjan.
 
+**Read the story behind it:** [From Poem to Video Song](https://ranjangithub.github.io/video-production/), an architect's guide to where gen AI belongs and how Claude skills make it repeatable ([source](docs/index.html)).
+
+**Watch:** [ओ बाबुल (Hindi)](https://www.youtube.com/watch?v=i_AczcfaoUA) · [Bridal Red (English)](https://youtu.be/Qefa8oZxpzU)
+
 ## What's in here
 
 ```

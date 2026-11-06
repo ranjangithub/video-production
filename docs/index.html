@@ -1,0 +1,460 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>From Poem to Video Song</title>
+<meta name="description" content="How a poet with a day job turned his poems into video songs: where gen AI belongs, where it doesn't, and how Claude skills make it repeatable. By Rajesh Ranjan.">
+<meta property="og:title" content="From Poem to Video Song">
+<meta property="og:description" content="Where gen AI belongs, where it doesn't, and how Claude skills make it repeatable. By Rajesh Ranjan.">
+<meta property="og:image" content="assets/cover-bridal-red.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Tiro+Devanagari+Hindi&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --paper: #faf6ef;
+  --paper-2: #f2ebdf;
+  --ink: #2a211c;
+  --ink-2: #5e524a;
+  --rule: #e2d8c8;
+  --accent: #9e2a22;        /* bridal red */
+  --accent-soft: rgba(158, 42, 34, 0.08);
+  --gold: #b07d2c;
+  --you: #3d4f6e;
+  --gen: #9e2a22;
+  --model: #b07d2c;
+  --code: #7c736b;
+  --card: #fffdf9;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #16120f; --paper-2: #1f1915; --ink: #efe7dc; --ink-2: #b4a899; --rule: #3a312a;
+    --accent: #e0705f; --accent-soft: rgba(224, 112, 95, 0.12); --gold: #d9a957;
+    --you: #8fa6cf; --gen: #e0705f; --model: #d9a957; --code: #a39a90; --card: #1d1814;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #16120f; --paper-2: #1f1915; --ink: #efe7dc; --ink-2: #b4a899; --rule: #3a312a;
+  --accent: #e0705f; --accent-soft: rgba(224, 112, 95, 0.12); --gold: #d9a957;
+  --you: #8fa6cf; --gen: #e0705f; --model: #d9a957; --code: #a39a90; --card: #1d1814;
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0; background: var(--paper); color: var(--ink);
+  font: 400 19px/1.7 "Lora", Georgia, serif;
+}
+.hi { font-family: "Tiro Devanagari Hindi", "Lora", serif; }
+a { color: var(--accent); text-underline-offset: 3px; }
+img { max-width: 100%; display: block; }
+
+/* hero */
+.hero { position: relative; min-height: 78vh; display: grid; place-items: end start; overflow: hidden; }
+.hero img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.hero::after { content: ""; position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(20,14,10,.88) 0%, rgba(20,14,10,.35) 45%, rgba(20,14,10,0) 70%); }
+.hero-text { position: relative; z-index: 1; padding: 0 16px 56px; max-width: 980px; margin: 0 auto; width: 100%; color: #faf3e8; }
+.kicker { font: 600 13px/1 "Inter", sans-serif; letter-spacing: .18em; text-transform: uppercase; color: #e8c48a; }
+.hero h1 { font-weight: 500; font-size: clamp(40px, 7vw, 76px); line-height: 1.05; margin: 14px 0 16px; letter-spacing: -.01em; }
+.hero p { font-size: clamp(18px, 2.2vw, 22px); max-width: 640px; margin: 0; color: #efe4d4; font-style: italic; }
+.byline { margin-top: 22px; font: 500 14px/1.4 "Inter", sans-serif; color: #e3d6c3; }
+
+/* layout */
+main { max-width: 720px; margin: 0 auto; padding: 0 16px 96px; }
+.wide { width: min(980px, calc(100vw - 32px)); max-width: none; position: relative; left: 50%; transform: translateX(-50%); }
+section { margin-top: 72px; }
+h2 { font-weight: 500; font-size: clamp(28px, 4vw, 36px); line-height: 1.2; margin: 0 0 20px; }
+h2 .step { display: block; font: 600 12px/1 "Inter", sans-serif; letter-spacing: .18em; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; }
+h3 { font-weight: 600; font-size: 21px; margin: 32px 0 8px; }
+p { margin: 0 0 18px; }
+.lead { font-size: 22px; line-height: 1.6; color: var(--ink); }
+.muted { color: var(--ink-2); }
+blockquote { margin: 28px 0; padding: 4px 0 4px 22px; border-left: 3px solid var(--accent); font-style: italic; font-size: 21px; color: var(--ink); }
+.pull { font-size: 24px; line-height: 1.45; text-align: center; margin: 40px auto; max-width: 600px; font-style: italic; }
+.pull b { font-style: normal; font-weight: 600; color: var(--accent); }
+ul, ol { padding-left: 24px; margin: 0 0 18px; }
+li { margin-bottom: 8px; }
+code { font: 500 .82em/1 ui-monospace, "SF Mono", Menlo, monospace; background: var(--paper-2); padding: 2px 6px; border-radius: 4px; }
+pre { white-space: pre-wrap; word-break: break-word; background: var(--paper-2); border: 1px solid var(--rule); border-radius: 8px; padding: 16px 18px; overflow-x: auto; font: 14px/1.6 ui-monospace, "SF Mono", Menlo, monospace; }
+pre code { background: none; padding: 0; font-size: inherit; }
+hr { border: 0; border-top: 1px solid var(--rule); margin: 72px 0 0; }
+
+/* videos */
+.videos { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 28px; }
+.video { background: var(--card); border: 1px solid var(--rule); border-radius: 10px; overflow: hidden; }
+.video .frame { position: relative; aspect-ratio: 16 / 9; background: #000; }
+.video iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.video .cap { padding: 12px 16px 14px; font: 500 15px/1.4 "Inter", sans-serif; }
+.video .cap span { display: block; color: var(--ink-2); font-weight: 400; font-size: 13px; margin-top: 2px; }
+
+/* figures */
+figure { margin: 32px 0; }
+
+figcaption { font: 400 14px/1.5 "Inter", sans-serif; color: var(--ink-2); margin-top: 10px; }
+.diagram { background: var(--card); border: 1px solid var(--rule); border-radius: 10px; padding: 20px; }
+.diagram svg { width: 100%; height: auto; display: block; }
+.pair { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.pair img { border-radius: 8px; }
+
+/* table */
+.table-wrap { overflow-x: auto; margin-top: 24px; margin-bottom: 24px; border: 1px solid var(--rule); border-radius: 10px; background: var(--card); }
+table { border-collapse: collapse; width: 100%; font: 400 15px/1.5 "Inter", sans-serif; }
+th, td { text-align: left; padding: 12px 14px; border-bottom: 1px solid var(--rule); vertical-align: top; }
+th { font-weight: 600; font-size: 13px; letter-spacing: .04em; text-transform: uppercase; color: var(--ink-2); background: var(--paper-2); }
+tr:last-child td { border-bottom: 0; }
+.tag { display: inline-block; font: 600 12px/1 "Inter", sans-serif; padding: 5px 8px; border-radius: 999px; white-space: nowrap; border: 1.5px solid; }
+.t-you { color: var(--you); border-color: var(--you); }
+.t-gen { color: var(--gen); border-color: var(--gen); background: var(--accent-soft); }
+.t-model { color: var(--model); border-color: var(--model); }
+.t-code { color: var(--code); border-color: var(--code); }
+
+/* questions */
+.questions { counter-reset: q; list-style: none; padding: 0; display: grid; gap: 12px; margin: 24px 0; }
+.questions li { counter-increment: q; background: var(--card); border: 1px solid var(--rule); border-radius: 10px; padding: 16px 18px 16px 60px; position: relative; margin: 0; }
+.questions li::before { content: counter(q); position: absolute; left: 18px; top: 14px; width: 28px; height: 28px; border-radius: 50%; display: grid; place-items: center; font: 600 14px/1 "Inter", sans-serif; color: var(--paper); background: var(--accent); }
+.questions b { display: block; }
+
+/* repo tree */
+.tree { font: 14px/1.7 ui-monospace, "SF Mono", Menlo, monospace; background: var(--paper-2); border: 1px solid var(--rule); border-radius: 10px; padding: 18px 20px; overflow-x: auto; white-space: pre; }
+.tree .c { color: var(--ink-2); }
+
+footer { border-top: 1px solid var(--rule); padding: 32px 16px 48px; text-align: center; font: 400 14px/1.6 "Inter", sans-serif; color: var(--ink-2); }
+.theme-toggle { position: fixed; top: 14px; right: 14px; z-index: 5; font: 500 13px/1 "Inter", sans-serif; padding: 8px 12px; border-radius: 999px; border: 1px solid rgba(255,255,255,.4); background: rgba(20,14,10,.45); color: #faf3e8; cursor: pointer; backdrop-filter: blur(6px); }
+
+@media (max-width: 700px) {
+  body { font-size: 17.5px; }
+  .videos, .pair { grid-template-columns: 1fr; }
+  .lead { font-size: 19.5px; }
+  .pull { font-size: 21px; }
+  .diagram { padding: 12px; overflow-x: auto; }
+  .diagram svg { min-width: 660px; }
+  .hero { min-height: 70vh; }
+}
+</style>
+</head>
+<body>
+<button class="theme-toggle" id="theme" aria-label="Switch light or dark theme">Theme</button>
+
+<header class="hero">
+  <img src="assets/hero-autumn-house.jpg" alt="A maple tree in bridal red over a white house">
+  <div class="hero-text">
+    <div class="kicker">A poet, a day job, and an agent</div>
+    <h1>From Poem to Video Song</h1>
+    <p>An architect's guide to where gen AI belongs, where it doesn't, and how Claude skills turn one good evening into a process.</p>
+    <div class="byline">Rajesh Ranjan · November 2026</div>
+  </div>
+</header>
+
+<main>
+
+<section>
+  <p class="lead">I am a poet at heart and a technologist by trade. For years my poems stayed on paper.</p>
+  <p>Turning a poem into a video song used to need a composer, a singer, a studio and an editor. That is real money for every poem. It also takes the one thing my working life does not leave me: long, uninterrupted hours.</p>
+  <p>That has changed. In one evening I turned <span class="hi">"ओ बाबुल"</span>, a song about a daughter's vidaai, into two finished lyric videos, one in Hindi and one in English. I then packaged the whole process so the next poem costs me minutes of attention, not a weekend.</p>
+  <p>This page is the thinking behind it, step by step, the way I would approach any system at work. Skills, the Claude feature that made it repeatable, come near the end. That is deliberate. A skill is how you package a good architecture. It does not replace having one.</p>
+</section>
+
+<section class="wide">
+  <h2>The two songs</h2>
+  <div class="videos">
+    <div class="video">
+      <div class="frame"><iframe src="https://www.youtube-nocookie.com/embed/i_AczcfaoUA" title="ओ बाबुल | O Babul" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen" allowfullscreen></iframe></div>
+      <div class="cap"><span class="hi" style="display:inline;color:inherit;font-size:17px">ओ बाबुल</span> · Hindi<span>A daughter's vidaai, a father at the window</span></div>
+    </div>
+    <div class="video">
+      <div class="frame"><iframe src="https://www.youtube-nocookie.com/embed/Qefa8oZxpzU" title="Bridal Red" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen" allowfullscreen></iframe></div>
+      <div class="cap">Bridal Red · English<span>The same story, written for every language of leaving</span></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="step">Step 1</span>Write the job down before choosing a tool</h2>
+  <p>The most common mistake I see with gen AI is starting from the tool: "We have a model; what can it do?" An architect starts from the job, the limits and the bar for "good". So before touching anything I wrote this down.</p>
+  <h3>The job</h3>
+  <p>A poem goes in. A shareable video song comes out: music, a voice, the words on screen in time with the singing, pictures that tell the story, and a cover.</p>
+  <h3>The constraints</h3>
+  <ul>
+    <li>Almost no money. No studio, no paid editor, no per-video fee that adds up across a hundred poems.</li>
+    <li>Almost no time. Minutes of my attention per song, not hours.</li>
+    <li>My words stay my words. Nothing invents or rewrites the poem.</li>
+    <li>No fake people. No generated likeness of a real person.</li>
+    <li>It must repeat. The tenth song should be as easy as the second.</li>
+  </ul>
+  <h3>The quality bar</h3>
+  <ul>
+    <li>The lyrics must land on the sung word, not roughly near it.</li>
+    <li>The words must never cover a face or crowd the picture.</li>
+    <li>It should feel made, not generated: a story that moves, not a slideshow.</li>
+  </ul>
+  <p>That list did most of the architecture for me. Every later decision is just checking an option against it.</p>
+</section>
+
+<section>
+  <h2><span class="step">Step 2</span>Break the job into stages</h2>
+  <p>A "video song" is not one thing. It is a chain of smaller jobs, and each one has a different nature. Some are creative, some are measurement, some are just assembly. The chain from poem to published video has nine links.</p>
+</section>
+
+<figure class="wide">
+  <div class="diagram">
+    <svg viewBox="0 0 760 352" role="img" aria-label="Gen AI does three of the nine stages; code and models do the rest" font-family="Inter, sans-serif" font-size="13">
+      <defs><marker id="pa" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="var(--code)"/></marker></defs>
+      <text x="24" y="34" font-size="15" font-weight="600" fill="var(--ink)">Gen AI does three of the nine stages; code and models do the rest</text>
+      <g fill="none" stroke="var(--code)" stroke-width="1.25">
+        <path d="M156 100H172" marker-end="url(#pa)"/><path d="M300 100H316" marker-end="url(#pa)"/><path d="M444 100H460" marker-end="url(#pa)"/><path d="M588 100H604" marker-end="url(#pa)"/>
+        <path d="M668 128V192" marker-end="url(#pa)"/><path d="M604 220H588" marker-end="url(#pa)"/><path d="M460 220H444" marker-end="url(#pa)"/><path d="M316 220H300" marker-end="url(#pa)"/>
+      </g>
+      <g text-anchor="middle">
+        <rect x="28" y="72" width="128" height="56" rx="8" fill="var(--you)" fill-opacity=".12" stroke="var(--you)" stroke-width="2"/><text x="92" y="98" font-weight="600" fill="var(--ink)">Write poem</text><text x="92" y="116" font-size="11.5" fill="var(--ink-2)">you</text>
+        <rect x="172" y="72" width="128" height="56" rx="8" fill="var(--gen)" fill-opacity=".12" stroke="var(--gen)" stroke-width="2"/><text x="236" y="98" font-weight="600" fill="var(--ink)">Compose + sing</text><text x="236" y="116" font-size="11.5" fill="var(--ink-2)">gen AI (Suno)</text>
+        <rect x="316" y="72" width="128" height="56" rx="8" fill="var(--gen)" fill-opacity=".12" stroke="var(--gen)" stroke-width="2"/><text x="380" y="98" font-weight="600" fill="var(--ink)">Make visuals</text><text x="380" y="116" font-size="11.5" fill="var(--ink-2)">gen AI images, clips</text>
+        <rect x="460" y="72" width="128" height="56" rx="8" fill="var(--model)" fill-opacity=".12" stroke="var(--model)" stroke-width="2"/><text x="524" y="98" font-weight="600" fill="var(--ink)">Split vocals</text><text x="524" y="116" font-size="11.5" fill="var(--ink-2)">audio model</text>
+        <rect x="604" y="72" width="128" height="56" rx="8" fill="var(--model)" fill-opacity=".12" stroke="var(--model)" stroke-width="2"/><text x="668" y="98" font-weight="600" fill="var(--ink)">Time words</text><text x="668" y="116" font-size="11.5" fill="var(--ink-2)">speech model + code</text>
+        <rect x="604" y="192" width="128" height="56" rx="8" fill="var(--gen)" fill-opacity=".12" stroke="var(--gen)" stroke-width="2"/><text x="668" y="218" font-weight="600" fill="var(--ink)">Direct video</text><text x="668" y="236" font-size="11.5" fill="var(--ink-2)">LLM (Claude)</text>
+        <rect x="460" y="192" width="128" height="56" rx="8" fill="none" stroke="var(--code)" stroke-width="1.25"/><text x="524" y="218" font-weight="600" fill="var(--ink)">Render frames</text><text x="524" y="236" font-size="11.5" fill="var(--ink-2)">plain code</text>
+        <rect x="316" y="192" width="128" height="56" rx="8" fill="none" stroke="var(--code)" stroke-width="1.25"/><text x="380" y="218" font-weight="600" fill="var(--ink)">Check output</text><text x="380" y="236" font-size="11.5" fill="var(--ink-2)">code, then LLM, you</text>
+        <rect x="172" y="192" width="128" height="56" rx="8" fill="var(--you)" fill-opacity=".12" stroke="var(--you)" stroke-width="2"/><text x="236" y="218" font-weight="600" fill="var(--ink)">Pick + publish</text><text x="236" y="236" font-size="11.5" fill="var(--ink-2)">you</text>
+      </g>
+      <g font-size="11.5" fill="var(--ink)">
+        <rect x="24" y="288" width="14" height="14" rx="3" fill="var(--you)" fill-opacity=".12" stroke="var(--you)" stroke-width="2"/><text x="46" y="299">You: soul and accountability</text>
+        <rect x="300" y="288" width="14" height="14" rx="3" fill="var(--gen)" fill-opacity=".12" stroke="var(--gen)" stroke-width="2"/><text x="322" y="299">Gen AI: judgement and taste</text>
+        <rect x="24" y="314" width="14" height="14" rx="3" fill="var(--model)" fill-opacity=".12" stroke="var(--model)" stroke-width="2"/><text x="46" y="325">Specialised model: perception</text>
+        <rect x="300" y="314" width="14" height="14" rx="3" fill="none" stroke="var(--code)" stroke-width="1.25"/><text x="322" y="325">Code: one right answer</text>
+      </g>
+    </svg>
+  </div>
+  <figcaption>I drew the chain first, without colours, and only then asked what each link needed. The colours are the answer to step 3.</figcaption>
+</figure>
+
+<section>
+  <h2><span class="step">Step 3</span>Decide where gen AI belongs, one stage at a time</h2>
+  <p>I use four questions for every stage, in this order. The first "yes" decides.</p>
+  <ol class="questions">
+    <li><b>Is this the soul of the work, or the accountability for it?</b>Then a human does it. Writing the poem. Choosing what gets published.</li>
+    <li><b>Is there one correct answer that a program can compute?</b>Then plain code does it. Fitting a crop, joining files, encoding video. Code is exact, free to repeat and easy to check.</li>
+    <li><b>Is it a narrow perception task that a trained model already does well?</b>Then a specialised model does it, not a chatbot. Separating a voice from the music. Hearing which word is sung when.</li>
+    <li><b>Does it need judgement, language or taste, where several answers are fine?</b>Then gen AI does it, and a human approves. Composing a melody. Deciding which picture goes with which line.</li>
+  </ol>
+</section>
+
+<div class="table-wrap wide">
+  <table>
+    <thead><tr><th>Stage</th><th>Done by</th><th>Why</th></tr></thead>
+    <tbody>
+      <tr><td>Write the poem</td><td><span class="tag t-you">Me</span></td><td>The soul of the work. Never automated.</td></tr>
+      <tr><td>Compose and sing it</td><td><span class="tag t-gen">Gen AI · Suno</span></td><td>Creative and generative, and the step I could not afford. I pick the take I like.</td></tr>
+      <tr><td>Make the visual story</td><td><span class="tag t-gen">Gen AI · image and video</span></td><td>Fictional people and places that fit the story. I choose which ones to keep.</td></tr>
+      <tr><td>Separate the vocals</td><td><span class="tag t-model">Model · Spleeter</span></td><td>A narrow audio task with a proven model. No judgement involved.</td></tr>
+      <tr><td>Time each word</td><td><span class="tag t-model">Speech model + code</span></td><td>The model hears; ordinary text matching lines its words up with mine. An LLM guessing timestamps would be wrong in a way that is hard to see.</td></tr>
+      <tr><td>Direct the video</td><td><span class="tag t-gen">LLM · Claude</span></td><td>Which picture tells which line is judgement about meaning. This is where an LLM earns its place.</td></tr>
+      <tr><td>Render the frames</td><td><span class="tag t-code">Code · Python, ffmpeg</span></td><td>Thousands of frames that must be exact and identical on every run.</td></tr>
+      <tr><td>Check the result</td><td><span class="tag t-code">Code, LLM, me</span></td><td>Code checks the file is whole; the LLM looks at stills for crowded text; I judge the feel.</td></tr>
+      <tr><td>Choose the cover and publish</td><td><span class="tag t-you">Me</span></td><td>My name is on it.</td></tr>
+    </tbody>
+  </table>
+</div>
+
+
+  <p>Notice how little of the pipeline is gen AI: two creative stages and one directing stage. Most of it is deliberately boring. Boring is what makes it cheap, fast and repeatable.</p>
+
+
+
+<section>
+  <h2><span class="step">Step 4</span>The roads not taken</h2>
+  <p>Architecture is mostly saying no. Three tempting options failed the list from step 1.</p>
+  <h3>Generate the whole video with AI</h3>
+  <p>One prompt, one finished video song. It sounds ideal. But a generated video cannot promise that a word appears exactly when it is sung, or that it never covers a face. It changes on every run, so a small fix means regenerating everything. And it pays per second of video, every time. It fails the quality bar and the cost constraint at once.</p>
+  <h3>Ask the LLM to do the precise work</h3>
+  <p>An LLM can write a timestamp, but it cannot hear one. Ask it when a word is sung and it will answer confidently and often wrongly. The same goes for counting pixels or computing crops. When a question has one right answer, a model that predicts plausible text is the wrong instrument. I let the LLM decide what to do and let code and specialised models do it.</p>
+  <h3>Build a proper app</h3>
+  <p>A web app with uploads, a timeline editor and a render queue. That is weeks of work to save me minutes per song, and it would freeze my process before I knew what it should be. A folder of scripts plus an agent that understands them is the cheaper first version. If it ever needs to serve other people, the app can come later, built around a process already proven.</p>
+  <blockquote>There was also a constraint I did not choose. The sandbox I worked in blocked the usual model download site. The design survived because each stage had a fallback: a second model host, then a method that needs no model at all. Plan for the environment you will actually get.</blockquote>
+</section>
+
+<section>
+  <h2><span class="step">Step 5</span>Use an agent as the glue</h2>
+  <p>Once the stages were clear, I had a pile of good parts: a separator, two speech models, a renderer, a cover tool. Somebody still had to run them in order, read each result and decide what to do next. That somebody used to be me, and that is exactly the time I do not have.</p>
+  <p>This is the job an agent does well. An agent is an LLM that can call tools: run a command, read a file, look at an image. It works in a loop: choose a step, run it, read the result, decide again.</p>
+</section>
+
+
+<figure class="wide">
+  <div class="diagram">
+    <svg viewBox="0 0 760 290" role="img" aria-label="The agent loops until the output is right, then delivers" font-family="Inter, sans-serif" font-size="13">
+      <defs><marker id="la" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="var(--code)"/></marker></defs>
+      <text x="24" y="30" font-size="15" font-weight="600" fill="var(--ink)">The agent loops until the output is right, then delivers</text>
+      <g fill="none" stroke="var(--code)" stroke-width="1.25">
+        <path d="M190 110H210" marker-end="url(#la)"/><path d="M380 110H400" marker-end="url(#la)"/><path d="M570 110H609" marker-end="url(#la)"/>
+        <path d="M665 70V60H295V86" marker-end="url(#la)"/><path d="M665 150V240H570" marker-end="url(#la)"/><path d="M400 240H380" marker-end="url(#la)"/><path d="M485 216V184H295V134" marker-end="url(#la)"/>
+      </g>
+      <g text-anchor="middle" fill="var(--ink)">
+        <rect x="20" y="86" width="170" height="48" rx="8" fill="none" stroke="var(--code)" stroke-width="1.25"/><text x="105" y="114">Read request + skill</text>
+        <rect x="210" y="86" width="170" height="48" rx="8" fill="none" stroke="var(--code)" stroke-width="1.25"/><text x="295" y="114">Choose next tool call</text>
+        <rect x="400" y="86" width="170" height="48" rx="8" fill="none" stroke="var(--code)" stroke-width="1.25"/><text x="485" y="114">Run it in the sandbox</text>
+        <polygon points="609,110 665,70 721,110 665,150" fill="none" stroke="var(--code)" stroke-width="1.25"/><text x="665" y="114">Worked?</text>
+        <rect x="400" y="216" width="170" height="48" rx="8" fill="none" stroke="var(--code)" stroke-width="1.25"/><text x="485" y="244">Look at the output</text>
+        <rect x="210" y="216" width="170" height="48" rx="8" fill="var(--gen)" fill-opacity=".12" stroke="var(--gen)" stroke-width="2"/><text x="295" y="244" font-weight="600">Deliver to the user</text>
+      </g>
+      <g font-size="11.5" fill="var(--ink-2)">
+        <text x="480" y="52" text-anchor="middle">no: find another route</text>
+        <text x="675" y="180">yes</text>
+        <text x="390" y="176" text-anchor="middle">not right yet: fix it</text>
+      </g>
+    </svg>
+  </div>
+  <figcaption>Every box is a tool call; every arrow back is a decision.</figcaption>
+</figure>
+
+
+  <p>The split matters. The agent never draws a frame or computes a timestamp. It decides <em>which</em> script to run with <em>which</em> settings, and it judges what comes back. Three moments from that first evening showed it best:</p>
+  <ul>
+    <li><b>The network said no.</b> The usual model hosts were blocked. The agent confirmed the block was policy, did not try to get around it, and found the same kind of models published on GitHub releases instead.</li>
+    <li><b>The first method was not good enough.</b> It first timed Hindi lines from the loudness of the isolated vocals, then moved to a speech model and text matching for word-level timing. Where a model still missed a line, it said so.</li>
+    <li><b>It checked its own work.</b> Before each full render it drew a few frames and looked at them. That caught English lines overlapping in fast verses, and lyrics fading into a white kurta.</li>
+  </ul>
+  <div class="pair">
+    <img src="assets/still-window.jpg" alt="A father with tea at a frosted window, lyric राहें ही तकता रहेगा at the bottom" loading="eager">
+    <img src="assets/still-car.jpg" alt="A bride in tears in a car, lyric ओ बाबुल at the bottom" loading="eager">
+  </div>
+  <figcaption>Stills the agent checked before rendering: small, low lyrics that never cover a face.</figcaption>
+  <p class="pull"><b>Code</b> for precision. <b>Specialised models</b> for perception. <b>The LLM</b> for judgement. <b>Me</b> for taste and accountability.</p>
+
+<section>
+  <h2><span class="step">Step 6</span>Package it as a skill so it repeats</h2>
+  <p>An agent that worked out the process once has not given me a process. The next session starts from nothing. It might choose differently, forget a rule, or rediscover the same fallbacks the slow way.</p>
+  <p>A <b>skill</b> fixes that. It is a folder:</p>
+  <ul>
+    <li><code>SKILL.md</code>: a one-line description of when to use it, then the steps in plain language.</li>
+    <li><code>scripts/</code>: the deterministic parts from step 3, as ready-made programs.</li>
+    <li><code>reference/</code>: the detail the agent only needs sometimes, such as the plan format and how to check timing.</li>
+  </ul>
+  <p>The clever part is <b>progressive disclosure</b>. At the start, Claude sees only the one-line description of each skill. Only when a request matches ("make a lyric video from this song") does it read the full instructions. It opens a reference file only when a step needs it. So a skill costs almost nothing until it is used, and you can have many.</p>
+<pre><code>---
+name: lyric-video
+description: Make a lyric video (MP4) from a song and the user's photos and clips...
+argument-hint: "[song.mp3] [media-folder]"
+---
+The scripts do the mechanical work. You are the director.
+1. Lyrics and timing   separate.py → align.py
+2. Draft the plan      make_plan.py
+3. Direct it           put each picture on the line that is about it; check stills
+4. Render              render.py (parallel; the hook checks every MP4)
+5. Cover               cover.py make / apply</code></pre>
+  <p>The skill is the architecture from steps 1 to 5, written down where the agent will read it. My judgement goes into the instructions once, not into every session.</p>
+</section>
+
+<section>
+  <h2><span class="step">Step 7</span>Put controls around the skill</h2>
+  <p>A skill tells the agent how to do the job. On its own it does not stop the agent doing something else. In my day job this is the difference between a procedure and a control. In Claude Code the controls are files that sit next to the skill.</p>
+</section>
+
+
+<figure class="wide">
+  <div class="diagram">
+    <svg viewBox="0 0 760 460" role="img" aria-label="Rules and guardrails wrap the skill; the scripts do the work" font-family="Inter, sans-serif" font-size="13">
+      <defs><marker id="ya" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="var(--code)"/></marker></defs>
+      <text x="24" y="30" font-size="15" font-weight="600" fill="var(--ink)">Rules and guardrails wrap the skill; the scripts do the work</text>
+      <g fill="none" stroke="var(--code)" stroke-width="1.25">
+        <path d="M272 112V136" marker-end="url(#ya)"/><path d="M272 192V216" marker-end="url(#ya)"/><path d="M144 272V296" marker-end="url(#ya)"/><path d="M400 272V296" marker-end="url(#ya)"/><path d="M144 352V376" marker-end="url(#ya)"/><path d="M400 352V376" marker-end="url(#ya)"/><path d="M640 340V404H520" stroke-dasharray="4 4" marker-end="url(#ya)"/>
+      </g>
+      <g fill="none" stroke="var(--code)" stroke-width="1.25">
+        <rect x="24" y="56" width="496" height="56" rx="8"/><rect x="24" y="136" width="496" height="56" rx="8"/>
+        <rect x="24" y="296" width="240" height="56" rx="8"/><rect x="280" y="296" width="240" height="56" rx="8"/><rect x="24" y="376" width="496" height="56" rx="8"/>
+        <rect x="560" y="96" width="160" height="88" rx="8"/><rect x="560" y="268" width="160" height="72" rx="8"/>
+      </g>
+      <rect x="24" y="216" width="496" height="56" rx="8" fill="var(--gen)" fill-opacity=".12" stroke="var(--gen)" stroke-width="2"/>
+      <rect x="544" y="56" width="192" height="376" rx="8" fill="var(--paper-2)" stroke="var(--code)" stroke-width="1.25"/>
+      <rect x="560" y="96" width="160" height="88" rx="8" fill="var(--card)" stroke="var(--code)" stroke-width="1.25"/>
+      <rect x="560" y="268" width="160" height="72" rx="8" fill="var(--card)" stroke="var(--code)" stroke-width="1.25"/>
+      <g fill="var(--ink)" font-weight="600">
+        <text x="40" y="78">You</text><text x="40" y="158">CLAUDE.md: standing rules</text><text x="40" y="238">Skill: lyric-video</text>
+        <text x="40" y="318">Subagent: timing-checker</text><text x="296" y="318">Subagent: cover-designer</text><text x="40" y="398">Scripts and models</text>
+        <text x="560" y="80">Guardrails</text><text x="576" y="120">Permissions</text><text x="576" y="292">Render hook</text>
+      </g>
+      <g fill="var(--ink-2)" font-size="11.5">
+        <text x="40" y="98">approve the plan, pick the cover, decide what is published</text>
+        <text x="40" y="178">read in every session: lyrics only from you, no generated likenesses</text>
+        <text x="40" y="258">loaded only when a request matches: the steps, scripts and reference</text>
+        <text x="40" y="338">flags misplaced lyric lines</text><text x="296" y="338">three covers, checked as thumbnails</text>
+        <text x="40" y="418">separate, align, draft plan, render, cover, check: exact and repeatable</text>
+        <text x="576" y="136">scripts run freely</text><text x="576" y="152">installs ask first</text><text x="576" y="168">originals locked</text>
+        <text x="576" y="308">checks every MP4</text><text x="576" y="324">reports problems back</text>
+      </g>
+    </svg>
+  </div>
+  <figcaption>The skill says how. The rules say what must always hold. The permissions and hook enforce it. I sit at the top and approve.</figcaption>
+</figure>
+
+
+  <ul>
+    <li><b>CLAUDE.md</b> holds the standing rules, loaded in every session whether or not the skill runs: my lyrics only, no generated likenesses, small low lyrics, my credit on every cover, a plan before any rendering.</li>
+    <li><b>Permissions</b> in <code>settings.json</code> turn those rules into limits. The skill's scripts and ffmpeg run without asking. Installing packages or downloading files needs my approval. My songs and media folders cannot be edited at all.</li>
+    <li><b>A hook</b> runs after every render and checks the file: video and audio present, length matching the song. A broken file goes straight back to the agent to fix, before it reaches me.</li>
+    <li><b>Subagents</b> handle side jobs in their own fresh context. One reviews the lyric timing for suspect lines; another designs three covers and checks them at thumbnail size.</li>
+  </ul>
+  <p>That is a small version of the same model I would want for any agent in a regulated firm.</p>
+
+<section>
+  <h2><span class="step">The repo</span>What's in this repository</h2>
+  <div class="tree">CLAUDE.md                      <span class="c">standing rules, read in every session</span>
+.claude/
+  settings.json                <span class="c">permissions + the render hook</span>
+  hooks/check_render.sh        <span class="c">validates every rendered MP4</span>
+  agents/cover-designer.md     <span class="c">three covers, checked at thumbnail size</span>
+  agents/timing-checker.md     <span class="c">flags misplaced lyric lines</span>
+  skills/lyric-video/
+    SKILL.md                   <span class="c">/lyric-video SONG.mp3 MEDIA/</span>
+    reference/                 <span class="c">plan format, timing notes</span>
+    scripts/                   <span class="c">separate, align, make_plan, render, cover, check_output</span>
+    fonts/                     <span class="c">Tiro Devanagari Hindi, Lora (SIL OFL)</span>
+examples/                      <span class="c">the directed plans for both songs</span>
+scripts/batch.sh               <span class="c">every song in songs/, headless</span></div>
+  <h3>Try it</h3>
+<pre><code>git clone https://github.com/ranjangithub/video-production
+cd video-production
+python3 -m pip install -r requirements.txt     # plus ffmpeg
+cp ~/Music/my_song.mp3 songs/ && cp ~/Pictures/story/* media/
+claude
+&gt; /lyric-video songs/my_song.mp3 media/</code></pre>
+  <p class="muted">Full setup is in the <a href="https://github.com/ranjangithub/video-production#readme">README</a>. Use only photos and footage you have the right to publish.</p>
+</section>
+
+<section>
+  <h2><span class="step">Takeaways</span>What I would teach from this</h2>
+  <ol>
+    <li><b>Start from the job and its limits, not the model.</b> The constraints wrote most of my architecture.</li>
+    <li><b>Ask the four questions at every stage.</b> Human for soul and accountability, code for one right answer, specialised models for perception, gen AI for judgement and taste.</li>
+    <li><b>Expect most of the pipeline to be boring.</b> Gen AI did three stages out of nine. The other six are why the result is cheap, exact and repeatable.</li>
+    <li><b>Never ask an LLM to fake precision.</b> Let it choose and judge; let code and specialised models measure.</li>
+    <li><b>Use an agent as the glue, not the engine.</b> It runs the parts, reads the results and recovers when something breaks.</li>
+    <li><b>Package what works as a skill.</b> Write your judgement down once, where the agent reads it, and the tenth run matches the second.</li>
+    <li><b>Put controls next to the skill.</b> Rules that always hold, permissions that enforce them, checks that catch failures, and a human who approves.</li>
+  </ol>
+  <p class="lead" style="margin-top:32px">My poems no longer wait for a budget or a free weekend. The craft stays mine: the words, the choices and the final yes. The machinery just stops being the reason they stay on paper.</p>
+</section>
+</main>
+
+<footer>
+  Lyrics, conceived &amp; produced by Rajesh Ranjan ·
+  <a href="https://www.youtube.com/watch?v=i_AczcfaoUA"><span class="hi">ओ बाबुल</span></a> ·
+  <a href="https://youtu.be/Qefa8oZxpzU">Bridal Red</a> ·
+  <a href="https://github.com/ranjangithub/video-production">Source on GitHub</a><br>
+  Music made with Suno; visuals made with AI image and video tools; lyric videos assembled with Claude.
+</footer>
+
+<script>
+(function () {
+  var root = document.documentElement, btn = document.getElementById('theme');
+  try { var s = localStorage.getItem('theme'); if (s) root.setAttribute('data-theme', s); } catch (e) {}
+  btn.addEventListener('click', function () {
+    var dark = root.getAttribute('data-theme') === 'dark' ||
+      (!root.getAttribute('data-theme') && matchMedia('(prefers-color-scheme: dark)').matches);
+    var next = dark ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    try { localStorage.setItem('theme', next); } catch (e) {}
+  });
+})();
+</script>
+</body>
+</html>
