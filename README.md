@@ -1,4 +1,4 @@
-# Lyric video studio for Claude Code
+# Lyrics video studio for Claude Code
 
 Turns a song and a folder of photos and clips into a lyric video with designed cover art. The lyrics sit small and
 low over the pictures, and each word brightens as it is sung. It works for Hindi, English and many other languages.
