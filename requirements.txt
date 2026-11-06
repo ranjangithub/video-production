@@ -1,0 +1,6 @@
+numpy
+opencv-python
+pillow          # needs libraqm for Devanagari shaping (bundled in most wheels)
+librosa
+soundfile
+sherpa-onnx

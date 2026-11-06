@@ -1,0 +1,1678 @@
+{
+ "video": {
+  "width": 1280,
+  "height": 720,
+  "fps": 30,
+  "crossfade": 1.0,
+  "lyric_y": 0.875,
+  "lyric_size": 46,
+  "bottom_shade": 0.42
+ },
+ "audio": "../songs/Bridal_Red.mp3",
+ "duration": 249.96,
+ "title": {
+  "text": "Bridal Red",
+  "start": 1.2,
+  "end": 16.6
+ },
+ "shots": [
+  {
+   "src": "../media/autumn_tree.mp4",
+   "start": 0.0,
+   "end": 18.7,
+   "clip_in": 0.0,
+   "speed": 0.52
+  },
+  {
+   "src": "../media/autumn_house.jpg",
+   "start": 18.7,
+   "end": 29.9,
+   "zoom": [
+    1.0,
+    1.14
+   ],
+   "f0": [
+    0.5,
+    0.45
+   ],
+   "f1": [
+    0.5,
+    0.35
+   ]
+  },
+  {
+   "src": "../media/wedding_venue.mp4",
+   "start": 29.9,
+   "end": 39.3,
+   "clip_in": 0.0,
+   "speed": 1.0
+  },
+  {
+   "src": "../media/dew_leaf.jpg",
+   "start": 39.3,
+   "end": 50.4,
+   "zoom": [
+    1.0,
+    1.14
+   ],
+   "f0": [
+    0.45,
+    0.5
+   ],
+   "f1": [
+    0.5,
+    0.45
+   ]
+  },
+  {
+   "src": "../media/embrace_and_car.mp4",
+   "start": 50.4,
+   "end": 59.5,
+   "clip_in": 0.0,
+   "speed": 0.9
+  },
+  {
+   "src": "../media/bride_in_car.mp4",
+   "start": 59.5,
+   "end": 77.4,
+   "clip_in": 0.0,
+   "speed": 0.56
+  },
+  {
+   "src": "../media/leaf.gif",
+   "start": 77.4,
+   "end": 83.1,
+   "speed": 0.6,
+   "pingpong": true
+  },
+  {
+   "src": "../media/embrace_and_car.mp4",
+   "start": 83.1,
+   "end": 88.0,
+   "clip_in": 2.6,
+   "speed": 0.7
+  },
+  {
+   "src": "../media/swing.jpg",
+   "start": 88.0,
+   "end": 93.0,
+   "zoom": [
+    1.3,
+    1.45
+   ],
+   "f0": [
+    0.64,
+    0.6
+   ],
+   "f1": [
+    0.62,
+    0.62
+   ]
+  },
+  {
+   "src": "../media/embrace_and_car.mp4",
+   "start": 93.0,
+   "end": 98.9,
+   "clip_in": 6.0,
+   "speed": 0.65
+  },
+  {
+   "src": "../media/father_at_window.jpg",
+   "start": 98.9,
+   "end": 111.9,
+   "zoom": [
+    1.02,
+    1.2
+   ],
+   "f0": [
+    0.5,
+    0.5
+   ],
+   "f1": [
+    0.66,
+    0.42
+   ]
+  },
+  {
+   "src": "../media/sprout.jpg",
+   "start": 111.9,
+   "end": 117.3,
+   "zoom": [
+    1.0,
+    1.12
+   ],
+   "f0": [
+    0.5,
+    0.5
+   ],
+   "f1": [
+    0.47,
+    0.5
+   ]
+  },
+  {
+   "src": "../media/sprout.jpg",
+   "start": 117.3,
+   "end": 122.2,
+   "zoom": [
+    1.35,
+    1.5
+   ],
+   "f0": [
+    0.44,
+    0.45
+   ],
+   "f1": [
+    0.47,
+    0.43
+   ]
+  },
+  {
+   "src": "../media/grandfather_and_baby.jpg",
+   "start": 122.2,
+   "end": 133.4,
+   "zoom": [
+    1.0,
+    1.1
+   ],
+   "f0": [
+    0.5,
+    0.45
+   ],
+   "f1": [
+    0.55,
+    0.42
+   ]
+  },
+  {
+   "src": "../media/grandfather_and_baby.jpg",
+   "start": 133.4,
+   "end": 142.5,
+   "zoom": [
+    1.35,
+    1.5
+   ],
+   "f0": [
+    0.6,
+    0.52
+   ],
+   "f1": [
+    0.62,
+    0.5
+   ]
+  },
+  {
+   "src": "../media/snow_tree.jpg",
+   "start": 142.5,
+   "end": 153.4,
+   "zoom": [
+    1.0,
+    1.12
+   ],
+   "f0": [
+    0.5,
+    0.45
+   ],
+   "f1": [
+    0.48,
+    0.35
+   ]
+  },
+  {
+   "src": "../media/icicles.jpg",
+   "start": 153.4,
+   "end": 164.3,
+   "zoom": [
+    1.0,
+    1.12
+   ],
+   "f0": [
+    0.5,
+    0.5
+   ],
+   "f1": [
+    0.45,
+    0.4
+   ]
+  },
+  {
+   "src": "../media/autumn_tree.mp4",
+   "start": 164.3,
+   "end": 174.6,
+   "clip_in": 0.0,
+   "speed": 0.95
+  },
+  {
+   "src": "../media/wedding_venue.mp4",
+   "start": 174.6,
+   "end": 183.5,
+   "clip_in": 0.6,
+   "speed": 1.05
+  },
+  {
+   "src": "../media/autumn_house.jpg",
+   "start": 183.5,
+   "end": 194.6,
+   "zoom": [
+    1.18,
+    1.0
+   ],
+   "f0": [
+    0.5,
+    0.4
+   ],
+   "f1": [
+    0.5,
+    0.5
+   ]
+  },
+  {
+   "src": "../media/embrace_and_car.mp4",
+   "start": 194.6,
+   "end": 203.6,
+   "clip_in": 0.0,
+   "speed": 0.6
+  },
+  {
+   "src": "../media/bride_in_car.mp4",
+   "start": 203.6,
+   "end": 218.3,
+   "clip_in": 0.0,
+   "speed": 0.68
+  },
+  {
+   "src": "../media/father_at_window.jpg",
+   "start": 218.3,
+   "end": 232.0,
+   "zoom": [
+    1.15,
+    1.3
+   ],
+   "f0": [
+    0.62,
+    0.45
+   ],
+   "f1": [
+    0.66,
+    0.42
+   ]
+  },
+  {
+   "src": "../media/swing.jpg",
+   "start": 232.0,
+   "end": 249.96,
+   "zoom": [
+    1.0,
+    1.12
+   ],
+   "f0": [
+    0.5,
+    0.5
+   ],
+   "f1": [
+    0.6,
+    0.55
+   ],
+   "fade_out": 5.0
+  }
+ ],
+ "chunks": [
+  {
+   "start": 18.8,
+   "end": 23.64,
+   "text": "The trees wear shades of bridal red",
+   "kind": "line",
+   "words": [
+    {
+     "text": "The",
+     "start": 18.8
+    },
+    {
+     "text": "trees",
+     "start": 19.04
+    },
+    {
+     "text": "wear",
+     "start": 19.84
+    },
+    {
+     "text": "shades",
+     "start": 20.4
+    },
+    {
+     "text": "of",
+     "start": 21.44
+    },
+    {
+     "text": "bridal",
+     "start": 21.76
+    },
+    {
+     "text": "red",
+     "start": 22.64
+    }
+   ]
+  },
+  {
+   "start": 24.64,
+   "end": 28.28,
+   "text": "Gold and amber in their thread",
+   "kind": "line",
+   "words": [
+    {
+     "text": "Gold",
+     "start": 24.64
+    },
+    {
+     "text": "and",
+     "start": 25.2
+    },
+    {
+     "text": "amber",
+     "start": 25.68
+    },
+    {
+     "text": "in",
+     "start": 26.96
+    },
+    {
+     "text": "their",
+     "start": 27.2
+    },
+    {
+     "text": "thread",
+     "start": 27.68
+    }
+   ]
+  },
+  {
+   "start": 30.0,
+   "end": 33.48,
+   "text": "Like a bride dressed up to say goodbye",
+   "kind": "line",
+   "words": [
+    {
+     "text": "Like",
+     "start": 30.0
+    },
+    {
+     "text": "a",
+     "start": 30.28
+    },
+    {
+     "text": "bride",
+     "start": 30.56
+    },
+    {
+     "text": "dressed",
+     "start": 31.2
+    },
+    {
+     "text": "up",
+     "start": 32.08
+    },
+    {
+     "text": "to",
+     "start": 32.32
+    },
+    {
+     "text": "say",
+     "start": 32.56
+    },
+    {
+     "text": "goodbye",
+     "start": 32.88
+    }
+   ]
+  },
+  {
+   "start": 35.36,
+   "end": 38.84,
+   "text": "With a thousand unspoken tears in her eyes",
+   "kind": "line",
+   "words": [
+    {
+     "text": "With",
+     "start": 35.36
+    },
+    {
+     "text": "a",
+     "start": 35.56
+    },
+    {
+     "text": "thousand",
+     "start": 35.76
+    },
+    {
+     "text": "unspoken",
+     "start": 36.32
+    },
+    {
+     "text": "tears",
+     "start": 37.36
+    },
+    {
+     "text": "in",
+     "start": 38.0
+    },
+    {
+     "text": "her",
+     "start": 38.24
+    },
+    {
+     "text": "eyes",
+     "start": 38.39
+    }
+   ]
+  },
+  {
+   "start": 39.36,
+   "end": 43.24,
+   "text": "The trees wear shades of bridal red",
+   "kind": "line",
+   "words": [
+    {
+     "text": "The",
+     "start": 39.36
+    },
+    {
+     "text": "trees",
+     "start": 39.52
+    },
+    {
+     "text": "wear",
+     "start": 40.32
+    },
+    {
+     "text": "shades",
+     "start": 40.88
+    },
+    {
+     "text": "of",
+     "start": 41.92
+    },
+    {
+     "text": "bridal",
+     "start": 42.64
+    },
+    {
+     "text": "red",
+     "start": 42.79
+    }
+   ]
+  },
+  {
+   "start": 45.04,
+   "end": 48.92,
+   "text": "Gold and amber in their thread",
+   "kind": "line",
+   "words": [
+    {
+     "text": "Gold",
+     "start": 45.04
+    },
+    {
+     "text": "and",
+     "start": 45.6
+    },
+    {
+     "text": "amber",
+     "start": 46.08
+    },
+    {
+     "text": "in",
+     "start": 47.36
+    },
+    {
+     "text": "their",
+     "start": 47.6
+    },
+    {
+     "text": "thread",
+     "start": 48.16
+    }
+   ]
+  },
+  {
+   "start": 50.4,
+   "end": 55.53,
+   "text": "As she leaves her father's home tonight",
+   "kind": "line",
+   "words": [
+    {
+     "text": "As",
+     "start": 50.4
+    },
+    {
+     "text": "she",
+     "start": 50.72
+    },
+    {
+     "text": "leaves",
+     "start": 50.96
+    },
+    {
+     "text": "her",
+     "start": 51.44
+    },
+    {
+     "text": "father's",
+     "start": 51.68
+    },
+    {
+     "text": "home",
+     "start": 52.56
+    },
+    {
+     "text": "tonight",
+     "start": 53.52
+    }
+   ]
+  },
+  {
+   "start": 55.68,
+   "end": 59.32,
+   "text": "Autumn weeps in colors bright",
+   "kind": "line",
+   "words": [
+    {
+     "text": "Autumn",
+     "start": 55.68
+    },
+    {
+     "text": "weeps",
+     "start": 56.24
+    },
+    {
+     "text": "in",
+     "start": 57.12
+    },
+    {
+     "text": "colors",
+     "start": 57.44
+    },
+    {
+     "text": "bright",
+     "start": 58.48
+    }
+   ]
+  },
+  {
+   "start": 62.16,
+   "end": 64.33,
+   "text": "Oh Father… Oh Father…",
+   "kind": "line",
+   "words": [
+    {
+     "text": "Oh",
+     "start": 62.16
+    },
+    {
+     "text": "Father…",
+     "start": 62.64
+    },
+    {
+     "text": "Oh",
+     "start": 63.64
+    },
+    {
+     "text": "Father…",
+     "start": 64.33
+    }
+   ]
+  },
+  {
+   "start": 64.48,
+   "end": 67.72,
+   "text": "I'll find my way back home again",
+   "kind": "line",
+   "words": [
+    {
+     "text": "I'll",
+     "start": 64.48
+    },
+    {
+     "text": "find",
+     "start": 64.64
+    },
+    {
+     "text": "my",
+     "start": 64.96
+    },
+    {
+     "text": "way",
+     "start": 65.36
+    },
+    {
+     "text": "back",
+     "start": 65.92
+    },
+    {
+     "text": "home",
+     "start": 66.48
+    },
+    {
+     "text": "again",
+     "start": 67.12
+    }
+   ]
+  },
+  {
+   "start": 77.52,
+   "end": 80.57,
+   "text": "The leaves let go of every branch",
+   "kind": "line",
+   "words": [
+    {
+     "text": "The",
+     "start": 77.52
+    },
+    {
+     "text": "leaves",
+     "start": 77.84
+    },
+    {
+     "text": "let",
+     "start": 78.32
+    },
+    {
+     "text": "go",
+     "start": 78.72
+    },
+    {
+     "text": "of",
+     "start": 79.04
+    },
+    {
+     "text": "every",
+     "start": 79.36
+    },
+    {
+     "text": "branch",
+     "start": 79.68
+    }
+   ]
+  },
+  {
+   "start": 80.72,
+   "end": 82.84,
+   "text": "As she takes her final glance",
+   "kind": "line",
+   "words": [
+    {
+     "text": "As",
+     "start": 80.72
+    },
+    {
+     "text": "she",
+     "start": 80.96
+    },
+    {
+     "text": "takes",
+     "start": 81.12
+    },
+    {
+     "text": "her",
+     "start": 81.52
+    },
+    {
+     "text": "final",
+     "start": 81.76
+    },
+    {
+     "text": "glance",
+     "start": 82.24
+    }
+   ]
+  },
+  {
+   "start": 83.2,
+   "end": 85.45,
+   "text": "Her wedding veil, her trembling hands",
+   "kind": "line",
+   "words": [
+    {
+     "text": "Her",
+     "start": 83.2
+    },
+    {
+     "text": "wedding",
+     "start": 83.36
+    },
+    {
+     "text": "veil,",
+     "start": 83.76
+    },
+    {
+     "text": "her",
+     "start": 84.16
+    },
+    {
+     "text": "trembling",
+     "start": 84.32
+    },
+    {
+     "text": "hands",
+     "start": 84.96
+    }
+   ]
+  },
+  {
+   "start": 85.6,
+   "end": 87.64,
+   "text": "A heart that barely understands",
+   "kind": "line",
+   "words": [
+    {
+     "text": "A",
+     "start": 85.6
+    },
+    {
+     "text": "heart",
+     "start": 85.6
+    },
+    {
+     "text": "that",
+     "start": 85.92
+    },
+    {
+     "text": "barely",
+     "start": 86.16
+    },
+    {
+     "text": "understands",
+     "start": 87.04
+    }
+   ]
+  },
+  {
+   "start": 88.0,
+   "end": 90.41,
+   "text": "The courtyard where her childhood grew",
+   "kind": "line",
+   "words": [
+    {
+     "text": "The",
+     "start": 88.0
+    },
+    {
+     "text": "courtyard",
+     "start": 88.16
+    },
+    {
+     "text": "where",
+     "start": 88.88
+    },
+    {
+     "text": "her",
+     "start": 89.2
+    },
+    {
+     "text": "childhood",
+     "start": 89.36
+    },
+    {
+     "text": "grew",
+     "start": 90.0
+    }
+   ]
+  },
+  {
+   "start": 90.56,
+   "end": 92.97,
+   "text": "The doors that always welcomed her through",
+   "kind": "line",
+   "words": [
+    {
+     "text": "The",
+     "start": 90.56
+    },
+    {
+     "text": "doors",
+     "start": 90.72
+    },
+    {
+     "text": "that",
+     "start": 91.12
+    },
+    {
+     "text": "always",
+     "start": 91.36
+    },
+    {
+     "text": "welcomed",
+     "start": 91.68
+    },
+    {
+     "text": "her",
+     "start": 92.32
+    },
+    {
+     "text": "through",
+     "start": 92.56
+    }
+   ]
+  },
+  {
+   "start": 93.12,
+   "end": 95.24,
+   "text": "Her father stands, with words unsaid",
+   "kind": "line",
+   "words": [
+    {
+     "text": "Her",
+     "start": 93.12
+    },
+    {
+     "text": "father",
+     "start": 93.28
+    },
+    {
+     "text": "stands,",
+     "start": 93.68
+    },
+    {
+     "text": "with",
+     "start": 94.16
+    },
+    {
+     "text": "words",
+     "start": 94.4
+    },
+    {
+     "text": "unsaid",
+     "start": 94.67
+    }
+   ]
+  },
+  {
+   "start": 95.6,
+   "end": 97.96,
+   "text": "And watches her leave the home she made",
+   "kind": "line",
+   "words": [
+    {
+     "text": "And",
+     "start": 95.6
+    },
+    {
+     "text": "watches",
+     "start": 95.84
+    },
+    {
+     "text": "her",
+     "start": 96.16
+    },
+    {
+     "text": "leave",
+     "start": 96.4
+    },
+    {
+     "text": "the",
+     "start": 96.72
+    },
+    {
+     "text": "home",
+     "start": 96.96
+    },
+    {
+     "text": "she",
+     "start": 97.36
+    },
+    {
+     "text": "made",
+     "start": 97.51
+    }
+   ]
+  },
+  {
+   "start": 99.04,
+   "end": 103.08,
+   "text": "Oh Father… Oh Father…",
+   "kind": "line",
+   "words": [
+    {
+     "text": "Oh",
+     "start": 99.04
+    },
+    {
+     "text": "Father…",
+     "start": 99.6
+    },
+    {
+     "text": "Oh",
+     "start": 101.76
+    },
+    {
+     "text": "Father…",
+     "start": 102.24
+    }
+   ]
+  },
+  {
+   "start": 104.08,
+   "end": 107.56,
+   "text": "I'll find my way back home again",
+   "kind": "line",
+   "words": [
+    {
+     "text": "I'll",
+     "start": 104.08
+    },
+    {
+     "text": "find",
+     "start": 104.24
+    },
+    {
+     "text": "my",
+     "start": 104.56
+    },
+    {
+     "text": "way",
+     "start": 105.12
+    },
+    {
+     "text": "back",
+     "start": 105.44
+    },
+    {
+     "text": "home",
+     "start": 106.08
+    },
+    {
+     "text": "again",
+     "start": 106.96
+    }
+   ]
+  },
+  {
+   "start": 111.84,
+   "end": 114.57,
+   "text": "When spring returns to wake the trees",
+   "kind": "line",
+   "words": [
+    {
+     "text": "When",
+     "start": 111.84
+    },
+    {
+     "text": "spring",
+     "start": 112.32
+    },
+    {
+     "text": "returns",
+     "start": 112.8
+    },
+    {
+     "text": "to",
+     "start": 113.44
+    },
+    {
+     "text": "wake",
+     "start": 113.6
+    },
+    {
+     "text": "the",
+     "start": 114.0
+    },
+    {
+     "text": "trees",
+     "start": 114.16
+    }
+   ]
+  },
+  {
+   "start": 114.72,
+   "end": 117.24,
+   "text": "And tender buds dance in the breeze",
+   "kind": "line",
+   "words": [
+    {
+     "text": "And",
+     "start": 114.72
+    },
+    {
+     "text": "tender",
+     "start": 114.96
+    },
+    {
+     "text": "buds",
+     "start": 115.36
+    },
+    {
+     "text": "dance",
+     "start": 115.92
+    },
+    {
+     "text": "in",
+     "start": 116.32
+    },
+    {
+     "text": "the",
+     "start": 116.48
+    },
+    {
+     "text": "breeze",
+     "start": 116.64
+    }
+   ]
+  },
+  {
+   "start": 117.6,
+   "end": 119.56,
+   "text": "I'll come again, with dreams anew",
+   "kind": "line",
+   "words": [
+    {
+     "text": "I'll",
+     "start": 117.6
+    },
+    {
+     "text": "come",
+     "start": 117.6
+    },
+    {
+     "text": "again,",
+     "start": 117.92
+    },
+    {
+     "text": "with",
+     "start": 118.4
+    },
+    {
+     "text": "dreams",
+     "start": 118.64
+    },
+    {
+     "text": "anew",
+     "start": 118.95
+    }
+   ]
+  },
+  {
+   "start": 119.84,
+   "end": 121.48,
+   "text": "And bring a little spring to you",
+   "kind": "line",
+   "words": [
+    {
+     "text": "And",
+     "start": 119.84
+    },
+    {
+     "text": "bring",
+     "start": 120.0
+    },
+    {
+     "text": "a",
+     "start": 120.2
+    },
+    {
+     "text": "little",
+     "start": 120.4
+    },
+    {
+     "text": "spring",
+     "start": 120.64
+    },
+    {
+     "text": "to",
+     "start": 120.82
+    },
+    {
+     "text": "you",
+     "start": 121.0
+    }
+   ]
+  },
+  {
+   "start": 122.32,
+   "end": 124.73,
+   "text": "With tiny footsteps by my side",
+   "kind": "line",
+   "words": [
+    {
+     "text": "With",
+     "start": 122.32
+    },
+    {
+     "text": "tiny",
+     "start": 122.56
+    },
+    {
+     "text": "footsteps",
+     "start": 123.12
+    },
+    {
+     "text": "by",
+     "start": 123.92
+    },
+    {
+     "text": "my",
+     "start": 124.08
+    },
+    {
+     "text": "side",
+     "start": 124.32
+    }
+   ]
+  },
+  {
+   "start": 124.88,
+   "end": 127.21,
+   "text": "New little stories, joys multiplied",
+   "kind": "line",
+   "words": [
+    {
+     "text": "New",
+     "start": 124.88
+    },
+    {
+     "text": "little",
+     "start": 125.2
+    },
+    {
+     "text": "stories,",
+     "start": 125.52
+    },
+    {
+     "text": "joys",
+     "start": 126.08
+    },
+    {
+     "text": "multiplied",
+     "start": 126.48
+    }
+   ]
+  },
+  {
+   "start": 127.36,
+   "end": 129.72,
+   "text": "Though life may take me far away",
+   "kind": "line",
+   "words": [
+    {
+     "text": "Though",
+     "start": 127.36
+    },
+    {
+     "text": "life",
+     "start": 127.76
+    },
+    {
+     "text": "may",
+     "start": 128.08
+    },
+    {
+     "text": "take",
+     "start": 128.32
+    },
+    {
+     "text": "me",
+     "start": 128.64
+    },
+    {
+     "text": "far",
+     "start": 128.88
+    },
+    {
+     "text": "away",
+     "start": 129.15
+    }
+   ]
+  },
+  {
+   "start": 129.92,
+   "end": 133.16,
+   "text": "Your home will always be my way",
+   "kind": "line",
+   "words": [
+    {
+     "text": "Your",
+     "start": 129.92
+    },
+    {
+     "text": "home",
+     "start": 130.24
+    },
+    {
+     "text": "will",
+     "start": 130.56
+    },
+    {
+     "text": "always",
+     "start": 131.12
+    },
+    {
+     "text": "be",
+     "start": 131.6
+    },
+    {
+     "text": "my",
+     "start": 131.84
+    },
+    {
+     "text": "way",
+     "start": 132.56
+    }
+   ]
+  },
+  {
+   "start": 133.52,
+   "end": 137.56,
+   "text": "Oh Father… Oh Father…",
+   "kind": "line",
+   "words": [
+    {
+     "text": "Oh",
+     "start": 133.52
+    },
+    {
+     "text": "Father…",
+     "start": 134.08
+    },
+    {
+     "text": "Oh",
+     "start": 136.24
+    },
+    {
+     "text": "Father…",
+     "start": 136.72
+    }
+   ]
+  },
+  {
+   "start": 138.56,
+   "end": 141.96,
+   "text": "I'll find my way back home again",
+   "kind": "line",
+   "words": [
+    {
+     "text": "I'll",
+     "start": 138.56
+    },
+    {
+     "text": "find",
+     "start": 138.56
+    },
+    {
+     "text": "my",
+     "start": 139.04
+    },
+    {
+     "text": "way",
+     "start": 139.52
+    },
+    {
+     "text": "back",
+     "start": 139.84
+    },
+    {
+     "text": "home",
+     "start": 140.56
+    },
+    {
+     "text": "again",
+     "start": 141.36
+    }
+   ]
+  },
+  {
+   "start": 164.32,
+   "end": 167.16,
+   "text": "The trees wear shades of bridal red",
+   "kind": "line",
+   "words": [
+    {
+     "text": "The",
+     "start": 164.32
+    },
+    {
+     "text": "trees",
+     "start": 164.56
+    },
+    {
+     "text": "wear",
+     "start": 165.04
+    },
+    {
+     "text": "shades",
+     "start": 165.36
+    },
+    {
+     "text": "of",
+     "start": 165.76
+    },
+    {
+     "text": "bridal",
+     "start": 165.92
+    },
+    {
+     "text": "red",
+     "start": 166.39
+    }
+   ]
+  },
+  {
+   "start": 169.76,
+   "end": 172.52,
+   "text": "Gold and amber in their thread",
+   "kind": "line",
+   "words": [
+    {
+     "text": "Gold",
+     "start": 169.76
+    },
+    {
+     "text": "and",
+     "start": 170.16
+    },
+    {
+     "text": "amber",
+     "start": 170.48
+    },
+    {
+     "text": "in",
+     "start": 171.28
+    },
+    {
+     "text": "their",
+     "start": 171.52
+    },
+    {
+     "text": "thread",
+     "start": 171.92
+    }
+   ]
+  },
+  {
+   "start": 174.88,
+   "end": 177.56,
+   "text": "A daughter dressed in autumn's glow",
+   "kind": "line",
+   "words": [
+    {
+     "text": "A",
+     "start": 174.88
+    },
+    {
+     "text": "daughter",
+     "start": 174.88
+    },
+    {
+     "text": "dressed",
+     "start": 175.44
+    },
+    {
+     "text": "in",
+     "start": 176.0
+    },
+    {
+     "text": "autumn's",
+     "start": 176.4
+    },
+    {
+     "text": "glow",
+     "start": 176.96
+    }
+   ]
+  },
+  {
+   "start": 178.72,
+   "end": 182.12,
+   "text": "Leaves with a heart that cannot go",
+   "kind": "line",
+   "words": [
+    {
+     "text": "Leaves",
+     "start": 178.72
+    },
+    {
+     "text": "with",
+     "start": 179.44
+    },
+    {
+     "text": "a",
+     "start": 179.76
+    },
+    {
+     "text": "heart",
+     "start": 180.08
+    },
+    {
+     "text": "that",
+     "start": 180.96
+    },
+    {
+     "text": "cannot",
+     "start": 181.36
+    },
+    {
+     "text": "go",
+     "start": 181.59
+    }
+   ]
+  },
+  {
+   "start": 183.52,
+   "end": 187.0,
+   "text": "The trees wear shades of bridal red",
+   "kind": "line",
+   "words": [
+    {
+     "text": "The",
+     "start": 183.52
+    },
+    {
+     "text": "trees",
+     "start": 183.76
+    },
+    {
+     "text": "wear",
+     "start": 184.56
+    },
+    {
+     "text": "shades",
+     "start": 185.2
+    },
+    {
+     "text": "of",
+     "start": 186.08
+    },
+    {
+     "text": "bridal",
+     "start": 186.4
+    },
+    {
+     "text": "red",
+     "start": 186.55
+    }
+   ]
+  },
+  {
+   "start": 189.28,
+   "end": 192.92,
+   "text": "Gold and amber in their thread",
+   "kind": "line",
+   "words": [
+    {
+     "text": "Gold",
+     "start": 189.28
+    },
+    {
+     "text": "and",
+     "start": 189.84
+    },
+    {
+     "text": "amber",
+     "start": 190.4
+    },
+    {
+     "text": "in",
+     "start": 191.6
+    },
+    {
+     "text": "their",
+     "start": 192.0
+    },
+    {
+     "text": "thread",
+     "start": 192.32
+    }
+   ]
+  },
+  {
+   "start": 194.72,
+   "end": 198.68,
+   "text": "As she leaves her father's home tonight",
+   "kind": "line",
+   "words": [
+    {
+     "text": "As",
+     "start": 194.72
+    },
+    {
+     "text": "she",
+     "start": 194.96
+    },
+    {
+     "text": "leaves",
+     "start": 195.2
+    },
+    {
+     "text": "her",
+     "start": 195.76
+    },
+    {
+     "text": "father's",
+     "start": 196.0
+    },
+    {
+     "text": "home",
+     "start": 196.8
+    },
+    {
+     "text": "tonight",
+     "start": 197.6
+    }
+   ]
+  },
+  {
+   "start": 200.0,
+   "end": 202.68,
+   "text": "Autumn holds her one last time",
+   "kind": "line",
+   "words": [
+    {
+     "text": "Autumn",
+     "start": 200.0
+    },
+    {
+     "text": "holds",
+     "start": 200.48
+    },
+    {
+     "text": "her",
+     "start": 201.12
+    },
+    {
+     "text": "one",
+     "start": 201.68
+    },
+    {
+     "text": "last",
+     "start": 202.08
+    },
+    {
+     "text": "time",
+     "start": 202.23
+    }
+   ]
+  },
+  {
+   "start": 206.4,
+   "end": 208.57,
+   "text": "Oh Father… Oh Father…",
+   "kind": "line",
+   "words": [
+    {
+     "text": "Oh",
+     "start": 206.4
+    },
+    {
+     "text": "Father…",
+     "start": 206.88
+    },
+    {
+     "text": "Oh",
+     "start": 207.92
+    },
+    {
+     "text": "Father…",
+     "start": 208.57
+    }
+   ]
+  },
+  {
+   "start": 208.72,
+   "end": 212.04,
+   "text": "I'll find my way back home again",
+   "kind": "line",
+   "words": [
+    {
+     "text": "I'll",
+     "start": 208.72
+    },
+    {
+     "text": "find",
+     "start": 208.96
+    },
+    {
+     "text": "my",
+     "start": 209.28
+    },
+    {
+     "text": "way",
+     "start": 209.6
+    },
+    {
+     "text": "back",
+     "start": 210.16
+    },
+    {
+     "text": "home",
+     "start": 210.8
+    },
+    {
+     "text": "again",
+     "start": 211.44
+    }
+   ]
+  },
+  {
+   "start": 218.39,
+   "end": 225.26,
+   "text": "Home again… Home again…",
+   "kind": "echo",
+   "words": [
+    {
+     "text": "Home",
+     "start": 218.39
+    },
+    {
+     "text": "again…",
+     "start": 219.52
+    },
+    {
+     "text": "Home",
+     "start": 221.21
+    },
+    {
+     "text": "again…",
+     "start": 222.33
+    }
+   ],
+   "estimated": true
+  }
+ ]
+}

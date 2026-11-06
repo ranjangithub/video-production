@@ -1,0 +1,48 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python3 .claude/skills/lyric-video/scripts/*)",
+      "Bash(ffmpeg *)",
+      "Bash(ffprobe *)",
+      "Bash(mkdir -p work/*)",
+      "Bash(mkdir -p out*)",
+      "Bash(ls *)",
+      "Bash(git status *)",
+      "Bash(git diff *)",
+      "Bash(git add work/*)",
+      "Bash(git commit *)",
+      "Read(songs/**)",
+      "Read(media/**)",
+      "Read(work/**)",
+      "Read(out/**)",
+      "Edit(work/**)",
+      "Write(work/**)",
+      "Write(out/**)"
+    ],
+    "ask": [
+      "Bash(pip install *)",
+      "Bash(curl *)",
+      "Bash(git push *)"
+    ],
+    "deny": [
+      "Bash(rm -rf *)",
+      "Edit(media/**)",
+      "Write(media/**)",
+      "Edit(songs/**)",
+      "Write(songs/**)"
+    ]
+  },
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"$CLAUDE_PROJECT_DIR\"/.claude/hooks/check_render.sh"
+          }
+        ]
+      }
+    ]
+  }
+}

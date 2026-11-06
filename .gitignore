@@ -1,0 +1,11 @@
+models/
+out/
+work/**/*.wav
+work/**/*.mp4
+work/**/*.png
+work/**/*.jpg
+work/**/*.chars.json
+media/
+songs/
+__pycache__/
+.DS_Store
