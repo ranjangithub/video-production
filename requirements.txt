@@ -4,3 +4,8 @@ pillow          # needs libraqm for Devanagari shaping (bundled in most wheels)
 librosa
 soundfile
 sherpa-onnx
+# web app (app/)
+fastapi
+uvicorn
+python-multipart
+anthropic

@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lyric Video Studio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;0,600;1,400&family=Tiro+Devanagari+Hindi&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --paper: #faf6ef; --paper-2: #f2ebdf; --card: #fffdf9; --ink: #2a211c; --ink-2: #6b5f56; --rule: #e2d8c8;
+  --accent: #9e2a22; --accent-ink: #fff; --accent-soft: rgba(158,42,34,.08); --gold: #a8741f; --good: #2f7d4f;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #16120f; --paper-2: #211b16; --card: #1d1814; --ink: #efe7dc; --ink-2: #b4a899; --rule: #3a312a;
+    --accent: #e0705f; --accent-ink: #1a0f0c; --accent-soft: rgba(224,112,95,.12); --gold: #d9a957; --good: #6fc391;
+  }
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 400 15px/1.55 "Inter", system-ui, sans-serif; }
+.wrap { max-width: 1040px; margin: 0 auto; padding: 0 16px 80px; }
+header.top { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; padding: 22px 0 18px; border-bottom: 1px solid var(--rule); margin-bottom: 28px; flex-wrap: wrap; }
+.brand { font: 600 22px/1 "Lora", serif; color: var(--ink); text-decoration: none; }
+.brand span { color: var(--accent); }
+.pill { font-size: 12px; padding: 5px 10px; border-radius: 999px; border: 1px solid var(--rule); color: var(--ink-2); }
+.pill.on { border-color: var(--good); color: var(--good); }
+h1 { font: 500 30px/1.2 "Lora", serif; margin: 0 0 6px; }
+h2 { font: 600 18px/1.3 "Lora", serif; margin: 0 0 12px; }
+.hi { font-family: "Tiro Devanagari Hindi", "Lora", serif; }
+.muted { color: var(--ink-2); }
+.card { background: var(--card); border: 1px solid var(--rule); border-radius: 12px; padding: 20px; margin-bottom: 18px; }
+.grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+label { display: block; font-weight: 500; margin: 14px 0 6px; }
+label small { font-weight: 400; color: var(--ink-2); }
+input[type=text], textarea { width: 100%; font: inherit; color: var(--ink); background: var(--paper); border: 1px solid var(--rule); border-radius: 8px; padding: 10px 12px; }
+textarea { min-height: 180px; resize: vertical; font-family: "Tiro Devanagari Hindi", "Inter", sans-serif; line-height: 1.6; }
+input:focus, textarea:focus, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+.drop { border: 2px dashed var(--rule); border-radius: 12px; padding: 22px; text-align: center; cursor: pointer; background: var(--paper); transition: border-color .15s, background .15s; }
+.drop.over, .drop:hover { border-color: var(--accent); background: var(--accent-soft); }
+.drop b { display: block; font-size: 15px; margin-bottom: 4px; }
+.drop input { display: none; }
+.files { margin-top: 10px; font-size: 13px; color: var(--ink-2); text-align: left; max-height: 120px; overflow: auto; }
+button { font: 600 14px/1 "Inter", sans-serif; border-radius: 8px; padding: 11px 16px; cursor: pointer; border: 1px solid var(--rule); background: var(--card); color: var(--ink); }
+button.primary { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+button:disabled { opacity: .5; cursor: default; }
+.row { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.err { background: var(--accent-soft); border: 1px solid var(--accent); color: var(--ink); border-radius: 8px; padding: 10px 12px; margin: 12px 0; }
+
+/* steps */
+.steps { display: flex; gap: 6px; flex-wrap: wrap; margin: 16px 0 22px; padding: 0; list-style: none; }
+.steps li { font-size: 12.5px; padding: 6px 10px; border-radius: 999px; border: 1px solid var(--rule); color: var(--ink-2); }
+.steps li.done { color: var(--good); border-color: var(--good); }
+.steps li.now { color: var(--accent-ink); background: var(--accent); border-color: var(--accent); }
+.progress { display: flex; gap: 14px; align-items: flex-start; }
+.spinner { width: 22px; height: 22px; border-radius: 50%; border: 3px solid var(--rule); border-top-color: var(--accent); animation: spin 0.9s linear infinite; flex: none; margin-top: 2px; }
+@keyframes spin { to { transform: rotate(360deg); } }
+.log { font: 12px/1.6 ui-monospace, Menlo, monospace; background: var(--paper-2); border-radius: 8px; padding: 10px 12px; margin-top: 10px; max-height: 220px; overflow: auto; white-space: pre-wrap; color: var(--ink-2); }
+
+/* review */
+.stills { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+.stills img, .covers img { width: 100%; border-radius: 8px; display: block; border: 1px solid var(--rule); }
+.stills figure { margin: 0; }
+.stills figcaption { font-size: 12px; color: var(--ink-2); margin-top: 4px; }
+table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+th, td { text-align: left; padding: 7px 8px; border-bottom: 1px solid var(--rule); vertical-align: top; }
+th { font-size: 11.5px; text-transform: uppercase; letter-spacing: .05em; color: var(--ink-2); font-weight: 600; }
+td.t { white-space: nowrap; color: var(--ink-2); font-variant-numeric: tabular-nums; }
+.scroll { max-height: 420px; overflow: auto; }
+.badge { display: inline-block; font-size: 11px; font-weight: 600; padding: 2px 7px; border-radius: 999px; border: 1px solid var(--gold); color: var(--gold); margin-left: 6px; }
+.thumb { width: 64px; height: 36px; object-fit: cover; border-radius: 4px; display: block; border: 1px solid var(--rule); background: var(--paper-2); }
+.covers { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+.cover { border: 2px solid transparent; border-radius: 10px; padding: 4px; cursor: pointer; background: none; text-align: left; font-weight: 400; }
+.cover:hover { border-color: var(--accent); }
+.cover .k { font-weight: 600; margin: 8px 4px 2px; text-transform: capitalize; }
+.cover .w { font-size: 12.5px; color: var(--ink-2); margin: 0 4px 4px; line-height: 1.4; }
+video { width: 100%; border-radius: 10px; background: #000; display: block; }
+.projects a { display: flex; justify-content: space-between; gap: 10px; padding: 10px 0; border-bottom: 1px solid var(--rule); color: var(--ink); text-decoration: none; }
+.projects a:hover { color: var(--accent); }
+@media (max-width: 760px) {
+  .grid2, .covers { grid-template-columns: 1fr; }
+  .stills { grid-template-columns: 1fr 1fr; }
+  h1 { font-size: 25px; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <a class="brand" href="#">Lyric Video <span>Studio</span></a>
+    <span class="pill" id="director">director: …</span>
+  </header>
+  <div id="view"></div>
+</div>
+
+<script>
+const $ = (s, el = document) => el.querySelector(s);
+const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+const fmt = t => { t = Math.max(0, +t || 0); const m = Math.floor(t / 60), s = (t % 60).toFixed(1).padStart(4, "0"); return `${m}:${s}`; };
+const STEPS = [["uploaded", "Upload"], ["separating", "Vocals"], ["timing", "Timing"], ["directing", "Directing"],
+               ["review", "Review"], ["rendering", "Render"], ["pick_cover", "Cover"], ["done", "Download"]];
+const ORDER = { uploaded: 0, separating: 1, timing: 2, directing: 3, stills: 3, review: 4, rendering: 5, covers: 5, pick_cover: 6, finishing: 7, done: 7 };
+const LABEL = { uploaded: "Starting…", separating: "Separating the vocals from the music", timing: "Timing every word against the singing",
+  directing: "Choosing which picture goes on which line", stills: "Drawing preview frames", rendering: "Rendering the video",
+  covers: "Designing three covers", finishing: "Putting the cover on the video" };
+let timer = null;
+
+async function api(path, opts = {}) {
+  const r = await fetch(path, opts);
+  if (!r.ok) { let m = r.statusText; try { m = (await r.json()).detail || m; } catch {} throw new Error(m); }
+  return r.json();
+}
+
+/* ---------------- home ---------------- */
+async function home() {
+  clearInterval(timer);
+  const projects = await api("/api/projects").catch(() => []);
+  $("#view").innerHTML = `
+    <h1>Turn a song into a lyric video</h1>
+    <p class="muted">Upload the song and the photos and clips that tell its story. The lyrics come from the MP3 if it carries them.</p>
+    <form class="card" id="new">
+      <div class="grid2">
+        <div>
+          <label>Song <small>MP3, WAV or M4A</small></label>
+          <div class="drop" data-for="song"><b>Drop the song here</b><span class="muted">or click to choose</span>
+            <input type="file" name="song" accept=".mp3,.wav,.m4a,.flac,.ogg,audio/*" required><div class="files"></div></div>
+        </div>
+        <div>
+          <label>Photos, clips and GIFs <small>several at once</small></label>
+          <div class="drop" data-for="media"><b>Drop pictures and clips here</b><span class="muted">or click to choose</span>
+            <input type="file" name="media" multiple accept="image/*,video/*,.gif"><div class="files"></div></div>
+        </div>
+      </div>
+      <div class="grid2">
+        <div><label>Title <small>shown in the intro and on the cover</small></label><input type="text" name="title" placeholder="Bridal Red"></div>
+        <div><label>Subtitle on the cover <small>optional</small></label><input type="text" name="tag" placeholder="THE ENGLISH VERSION OF O BABUL"></div>
+      </div>
+      <label>Credit on the cover</label><input type="text" name="credit" value="Rajesh Ranjan">
+      <label>Lyrics <small>leave empty if the MP3 carries them; one sung line per line</small></label>
+      <textarea name="lyrics" placeholder="[Chorus]&#10;The trees wear shades of bridal red&#10;…"></textarea>
+      <div id="formerr"></div>
+      <div class="row" style="margin-top:16px"><button class="primary" type="submit">Upload and start</button>
+        <span class="muted" id="upmsg"></span></div>
+    </form>
+    ${projects.length ? `<div class="card projects"><h2>Your videos</h2>${projects.map(p =>
+      `<a href="#${p.id}"><span>${esc(p.title || "Untitled")}</span><span class="muted">${esc((p.stage || "").replace("_", " "))}</span></a>`).join("")}</div>` : ""}`;
+  document.querySelectorAll(".drop").forEach(d => {
+    const input = $("input", d), list = $(".files", d);
+    const show = () => list.textContent = [...input.files].map(f => f.name).join(" · ");
+    d.onclick = e => { if (e.target !== input) input.click(); };
+    input.onchange = show;
+    d.ondragover = e => { e.preventDefault(); d.classList.add("over"); };
+    d.ondragleave = () => d.classList.remove("over");
+    d.ondrop = e => { e.preventDefault(); d.classList.remove("over"); input.files = e.dataTransfer.files; show(); };
+  });
+  $("#new").onsubmit = async e => {
+    e.preventDefault();
+    const f = e.target, fd = new FormData(f), btn = $("button", f);
+    if (!f.song.files.length) return $("#formerr").innerHTML = `<div class="err">Choose the song first.</div>`;
+    if (!f.media.files.length) return $("#formerr").innerHTML = `<div class="err">Add at least one photo or clip.</div>`;
+    btn.disabled = true; $("#upmsg").textContent = "Uploading…"; $("#formerr").innerHTML = "";
+    try { const { id } = await api("/api/projects", { method: "POST", body: fd }); location.hash = id; }
+    catch (err) { $("#formerr").innerHTML = `<div class="err">${esc(err.message)}</div>`; btn.disabled = false; $("#upmsg").textContent = ""; }
+  };
+}
+
+/* ---------------- project ---------------- */
+async function show(id) {
+  clearInterval(timer);
+  const draw = async () => {
+    let s; try { s = await api(`/api/projects/${id}`); } catch (e) { clearInterval(timer); $("#view").innerHTML = `<div class="err">${esc(e.message)}</div>`; return; }
+    if (location.hash.slice(1) !== id) return;
+    if (!s.busy) clearInterval(timer);          // nothing running: stop polling
+    render(s);
+  };
+  timer = setInterval(draw, 2000);
+  await draw();
+}
+
+function stepper(s) {
+  const now = ORDER[s.stage] ?? 0;
+  return `<ul class="steps">${STEPS.map(([k, l], i) => `<li class="${i < now || s.stage === "done" ? "done" : i === now ? "now" : ""}">${l}</li>`).join("")}</ul>`;
+}
+
+let lastKey = "";
+function render(s) {
+  const key = JSON.stringify([s.stage, s.busy, s.error, s.log?.length, s.updated]);
+  if (key === lastKey) return; lastKey = key;
+  const id = s.id, hi = /[ऀ-ॿ]/.test(s.title || "");
+  let body = "";
+  if (s.busy) {
+    body = `<div class="card"><div class="progress"><div class="spinner"></div><div style="flex:1">
+      <b>${esc(LABEL[s.stage] || "Working…")}</b>
+      <div class="muted">${s.stage === "rendering" ? "About 30 seconds per minute of song on 2 cores, faster on more." : s.stage === "separating" || s.stage === "timing" ? "The first song downloads the speech models once; later songs are quicker." : ""}</div>
+      <div class="log">${esc((s.log || []).join("\n"))}</div></div></div></div>`;
+  } else if (s.stage === "needs_lyrics" || (s.stage === "error" && !s.lines)) {
+    body = `${s.error ? `<div class="err">${esc(s.error)}</div>` : ""}
+      <div class="card"><h2>Lyrics</h2><p class="muted">One sung line per line. Section tags like [Chorus] are ignored; [Echo: …] lines become small echoes.</p>
+      <textarea id="lyr">${esc(s.lyrics)}</textarea><div class="row" style="margin-top:12px">
+      <button class="primary" id="retime">Time the lyrics</button></div></div>`;
+  } else if (["review", "error"].includes(s.stage) && s.lines) {
+    const est = new Set(s.estimated || []);
+    body = `${s.error ? `<div class="err">${esc(s.error)}</div>` : ""}
+      <div class="card"><div class="row" style="justify-content:space-between"><div><h2 style="margin:0">Preview frames</h2>
+        <span class="muted">${s.director ? `Directed by ${esc(s.director)}.` : "Draft order: set ANTHROPIC_API_KEY to let Claude direct."} ${est.size ? `${est.size} line(s) placed by estimate, marked below.` : "Every line was heard by the speech model."}</span></div>
+        <div class="row"><button id="redirect">${s.director ? "Ask Claude again" : "Direct again"}</button><button class="primary" id="render">Render the video</button></div></div>
+        ${s.notes ? `<p style="margin:14px 0 0"><i>${esc(s.notes)}</i></p>` : ""}
+        <div class="stills" style="margin-top:16px">${s.stills.map(f => `<figure><img src="/files/${id}/stills/${f}?v=${s.updated}" alt="Preview frame"><figcaption>${fmt(parseFloat(f.slice(6)))}</figcaption></figure>`).join("")}</div></div>
+      <div class="grid2">
+        <div class="card"><h2>Lyric timing</h2><div class="scroll"><table><tr><th>Time</th><th>Line</th></tr>
+          ${s.lines.map((l, i) => `<tr><td class="t">${fmt(l.start)}</td><td class="${/[ऀ-ॿ]/.test(l.text) ? "hi" : ""}">${l.kind === "echo" ? "<i>" : ""}${esc(l.text)}${l.kind === "echo" ? "</i>" : ""}${est.has(i) ? '<span class="badge">estimated</span>' : ""}</td></tr>`).join("")}</table></div></div>
+        <div class="card"><h2>Shot list</h2><div class="scroll"><table><tr><th>Time</th><th></th><th>Why</th></tr>
+          ${(s.shots || []).map(x => `<tr><td class="t">${fmt(x.start)}</td><td>${/\.(mp4|mov|m4v|webm)$/i.test(x.media) ? `<video class="thumb" src="/files/${id}/media/${encodeURIComponent(x.media)}#t=1" muted preload="metadata"></video>` : `<img class="thumb" src="/files/${id}/media/${encodeURIComponent(x.media)}" alt="">`}</td><td>${esc(x.why || x.media)}</td></tr>`).join("")}</table></div></div>
+      </div>
+      <div class="card"><h2>Fix the lyrics</h2><p class="muted">Edit and re-time. The speech recognition is saved, so this takes seconds, and your shot list is kept.</p>
+        <textarea id="lyr">${esc(s.lyrics)}</textarea><div class="row" style="margin-top:12px"><button id="retime">Save and re-time</button></div></div>`;
+  } else if (s.stage === "pick_cover" || (s.stage === "error" && s.has_video && !s.has_final)) {
+    body = `${s.error ? `<div class="err">${esc(s.error)}</div>` : ""}
+      <div class="card"><h2>The video</h2><video controls preload="metadata" src="/files/${id}/out/video.mp4?v=${s.updated}"></video>
+        <div class="row" style="margin-top:12px"><a href="/download/${id}/video"><button>Download without a cover</button></a></div></div>
+      <div class="card"><h2>Pick a cover</h2><p class="muted">It goes on the first frame and becomes the file's thumbnail.</p>
+        <div class="covers">${(s.covers || []).map(n => { const c = (s.cover_ideas || [])[n - 1] || {};
+          return `<button class="cover" data-n="${n}"><img src="/files/${id}/covers/cover_${n}.jpg?v=${s.updated}" alt="Cover ${n}"><div class="k">${esc(c.kind || "Cover " + n)}</div><div class="w">${esc(c.why || "")}</div></button>`; }).join("")}</div></div>`;
+  } else if (s.stage === "done") {
+    body = `<div class="card"><h2>Ready</h2><video controls preload="metadata" src="/files/${id}/out/final.mp4?v=${s.updated}"></video>
+      <div class="row" style="margin-top:14px"><a href="/download/${id}/video"><button class="primary">Download the MP4</button></a>
+      <a href="/download/${id}/cover"><button>Download the cover</button></a>
+      <button id="again">Choose another cover</button></div>
+      <p class="muted" style="margin-top:14px">If it's going public, use only photos and footage you have the right to publish.</p></div>`;
+  } else {
+    body = `<div class="card">${s.error ? `<div class="err">${esc(s.error)}</div>` : ""}<button id="redirect">Start again</button></div>`;
+  }
+  $("#view").innerHTML = `<p><a href="#" class="muted">← All videos</a></p><h1 class="${hi ? "hi" : ""}">${esc(s.title || "Untitled")}</h1>
+    <div class="muted">${esc(s.song_name || "")}${s.duration ? ` · ${fmt(s.duration)}` : ""}${s.media ? ` · ${s.media.length} media files` : ""}</div>${stepper(s)}${body}`;
+  const on = (sel, fn) => { const el = $(sel); if (el) el.onclick = fn; };
+  const act = async (path, fd) => { try { await api(path, { method: "POST", body: fd }); lastKey = ""; show(id); } catch (e) { alert(e.message); } };
+  on("#retime", () => { const fd = new FormData(); fd.append("lyrics", $("#lyr").value); act(`/api/projects/${id}/lyrics`, fd); });
+  on("#redirect", () => act(`/api/projects/${id}/redirect`));
+  on("#render", () => act(`/api/projects/${id}/render`));
+  on("#again", () => { s.stage = "pick_cover"; lastKey = ""; render(s); });
+  document.querySelectorAll(".cover").forEach(b => b.onclick = () => act(`/api/projects/${id}/cover/${b.dataset.n}`));
+}
+
+/* ---------------- routing ---------------- */
+function route() { lastKey = ""; const id = location.hash.slice(1); id ? show(id) : home(); }
+window.addEventListener("hashchange", route);
+api("/api/info").then(i => { const d = $("#director"); d.textContent = i.director === "claude" ? `director: Claude (${i.model})` : "director: draft (no API key)"; d.classList.toggle("on", i.director === "claude"); }).catch(() => {});
+route();
+</script>
+</body>
+</html>

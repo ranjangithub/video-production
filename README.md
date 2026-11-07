@@ -33,6 +33,8 @@ examples/
   o_babul_plan.json                the directed Hindi plan (shots + word-timed lyrics)
   bridal_red_plan.json             the directed English plan
 scripts/batch.sh                   every song in songs/ to a finished video, headless (claude -p)
+scripts/web.sh                     the web app: upload an MP3, download an MP4
+app/                               the web app's server, pipeline, Claude director and page
 songs/  media/  work/  out/  models/
 ```
 
@@ -85,6 +87,36 @@ media in `media/` with the names used in the examples (`autumn_tree.mp4`, `embra
 ```bash
 python3 .claude/skills/lyric-video/scripts/render.py examples/bridal_red_plan.json -o out/bridal-red.mp4
 ```
+
+## The web app: upload an MP3, download an MP4
+
+For when you want a browser instead of a chat. It runs on your own computer and uses the same skill scripts.
+
+```bash
+export ANTHROPIC_API_KEY=sk-ant-...      # lets Claude direct the shot list; leave unset for a plain draft
+scripts/web.sh                            # opens http://localhost:8000
+```
+
+1. **Upload** the song and the photos, clips and GIFs. Add a title, a subtitle and the credit for the cover. Paste
+   the lyrics only if the MP3 does not carry them.
+2. **Wait** while it separates the vocals, times every word and asks Claude to direct. Progress shows live.
+3. **Review** six preview frames, the lyric timing (lines placed by estimate are marked) and Claude's shot list,
+   with a reason for each picture. Fix the lyrics and re-time in seconds, or ask Claude for another take.
+4. **Render**, then **pick one of three covers** Claude proposed: a person, a place and a texture.
+5. **Download** the MP4 (cover on the first frame and as its thumbnail) and the cover image.
+
+How the director works: the app sends Claude the timed lyrics and small previews of every photo and three frames of
+every clip, and Claude answers through a fixed tool schema. Code then checks and repairs the answer: shots in order
+and covering the whole song, each at least 3 s, clips never running out, zoom and focus in range. So the judgement is
+Claude's and the precision is code's. Set `LYRIC_DIRECTOR_MODEL` to choose the model (default `claude-sonnet-5-5`).
+Projects are kept in `work/web/` and never leave your computer except for those previews.
+
+| Piece | File |
+| --- | --- |
+| Web server and API | `app/server.py` |
+| Job pipeline (runs the skill's scripts, one job at a time) | `app/pipeline.py` |
+| Claude director, with checking and repair | `app/director.py` |
+| The page | `app/static/index.html` |
 
 ## Many songs at once
 

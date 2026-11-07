@@ -10,6 +10,8 @@ This repo turns songs written by Rajesh Ranjan into lyric videos, using the `lyr
 - `work/<song-slug>/` — vocals, `words.json`, `style_plan.json`, stills. Commit the plan; the rest is ignored
 - `out/` — finished videos and covers (ignored by git)
 - `models/` — downloaded speech and separation models (ignored by git)
+- `app/` — the local web app (upload MP3 → download MP4); `scripts/web.sh` starts it. It calls the same skill scripts, so change behaviour in the scripts, not in the app
+- `work/web/` — the web app's projects (ignored by git)
 - `examples/` — the directed plans for "O Babul" and "Bridal Red", as references for style
 
 ## Standing rules
